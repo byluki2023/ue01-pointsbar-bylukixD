@@ -195,6 +195,8 @@ jobs:
   update-points-bar:
     needs: run-autograding-tests
     runs-on: ubuntu-latest
+    # WICHTIG: Auch ausführen wenn Tests fehlschlagen
+    if: always() && needs.run-autograding-tests.result != 'cancelled'
     permissions:
       contents: write
     steps:
